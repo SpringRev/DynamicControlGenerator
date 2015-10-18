@@ -1,0 +1,28 @@
+﻿@using DynamicControlGenerator.Models;
+@using System.Web.Mvc;
+
+@model List < AdditionalField >
+    < div >
+    <h1>
+        Hello Revs
+                @foreach (var item in Model)
+                {
+                    if (item.controlType == "select")
+                    {
+                        // @Html.DropDownList(item.controlName);
+                              @Html.DropDownList("Chart Type", new List<SelectListItem>
+                                            {
+                                            new SelectListItem{ Text="Horizontal", Value = "Horizontal" },
+                                            new SelectListItem{ Text="Vertical", Value = "Vertical" },
+                                            new SelectListItem{ Text="Pie", Value = "Pie" }
+                                            });
+                            }
+                           <br/>
+                            if (item.controlType == "textbox")
+                            {
+                            @Html.TextBox(item.controlName);
+                            }
+
+                            }
+</h1>
+</div>
